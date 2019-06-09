@@ -1,23 +1,24 @@
-tools  {
-       maven ‘Maven 3.5.4'
-       }
+pipeline {
+    agent any
+    tools{
+      maven ‘Maven 3.5.4’
 
-       stages {
-         stage('Build') {
-             steps {
-                echo 'Building..’
-                sh ‘mvn clean compile'
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                sh ‘mvn clean compile’
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..’
-                sh ‘mvn test'
+                echo 'Testing..'
+                mvn test’
             }
         }
-        stage(‘Package') {
+        stage('Deploy') {
             steps {
-                echo 'Deploying….'
+                echo 'Deploying....'
                 sh ‘mvn -DskipTests
                 archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
             }
