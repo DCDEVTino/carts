@@ -1,5 +1,5 @@
 tools  {
-       maven  ‘Maven 3.5.4'
+       maven ‘Maven 3.5.4'
        }
 
        stages {
